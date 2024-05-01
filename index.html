@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script async src="https://js.stripe.com/v3/buy-button.js">
+    </script>
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <div>
+        <h3>Como usar?</h3>
+        <ul>
+            <li>Abaixo você terá um campo onde você poderá colocar um texto para ser transformado em um áudio;</li>
+            <li>Após inserir o texto, clique no botão "Gerar áudio";</li>
+            <li>Após clicar no botão, o áudio será gerado e você poderá ouvir o áudio;</li>
+            <li>Você também poderá baixar ou compartilhar o áudio;</li>
+            <li>Você pode escolher outras vozes se assim desejar;</li>
+            <li>O texto tem no máximo 4096 caracteres;</li>
+            <li>Falhas podem ocorrer. Caso o resultado não esteje ao seu gosto, tente novamente.</li>
+        </ul>
+    </div>
+
+    <div>
+        <h3>Insira o texto</h3>
+        <textarea id="input" rows="4" cols="50" maxlength="4096"></textarea>
+        <h3>Selecione a voz</h3>
+        <select id="voice">
+            <option value="alloy">Tomas Turbando</option>
+            <option value="echo">Cuca Beludo</option>
+            <option value="fable">Beijamin A. Rolla</option>
+            <option value="onyx">Zeca Gado</option>
+            <option value="nova">Deide Costa</option>
+            <option value="shimmer">Paula Vadão</option>
+        </select>
+        <button onclick="post()">
+            <h3>Gerar áudio</h3>
+        </button>
+
+        <hr>
+
+        <h3 id="loading" style="display: none;">Carregando...</h3>
+        <h3 id="error" style="display: none;"></h3>
+        <audio controls id="audio" style="display: none; align-self: center;"></audio>
+        <button style="display: none;" id="download" onclick="download()">
+            <h3>Baixar 👇</h3>
+        </button>
+    </div>
+
+    <div>
+        <h3>Como funciona?</h3>
+        <p>
+            Nós utilizamos a API do OpenAI (aquela mesma responsável pelo ChatGPT) para pegar o texto e converter em
+            áudio.
+            A API que utilizamos é paga, então peço uma colaboração para manter o serviço ativo.
+        </p>
+        <stripe-buy-button style="align-self: center;" buy-button-id="buy_btn_1PBk34CDEfie1SEOgcxvLird"
+            publishable-key="pk_live_51Nct5UCDEfie1SEOwbGjl9O6ELU1FKRu44APYak2y7UgwMhLrTfoNUe5HPEdKCwEhelMd8EPmCwsypUodz4Uxfei00XKFBVxuo">
+        </stripe-buy-button>
+    </div>
+</body>
+
+</html>
